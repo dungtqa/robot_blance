@@ -1,6 +1,7 @@
 
 #include<Wire.h>
 #include<PID_v1.h>
+#include "BasicStepperDriver.h"
 
 const int MPU_addr=0x68;
 
@@ -13,9 +14,26 @@ double angle;
 
 double Setpoint, Input, Output;
 
-double Kp=2, Ki=5, Kd=1;
+double Kp=0, Ki=0, Kd=0;
 
 PID pid(&Input, &Output, &Setpoint, Kp, Ki, Kd, DIRECT);
+
+#define MOTOR_STEPS 200
+#define RPM 120
+
+#define MICROSTEPS 1
+
+#define DIR_X 8
+#define STEP_X 9
+#define DIR_Y 8
+#define STEP_Y 9
+
+#define MS1 10
+#define MS2 11
+#define MS3 12
+
+BasicStepperDriver stepper_x(MOTOR_STEPS, DIR_X, STEP_X);
+BasicStepperDriver stepper_y(MOTOR_STEPS, DIR_Y, STEP_Y);
 
 void setup() {
   Wire.begin();
@@ -28,6 +46,9 @@ void setup() {
   Setpoint = 0;
 
   pid.SetMode(AUTOMATIC);
+
+  stepper_x.begin(RPM, MICROSTEPS);
+  stepper_y.begin(RPM, MICROSTEPS);
 }
 
 void loop() {
