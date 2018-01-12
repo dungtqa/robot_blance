@@ -10,11 +10,15 @@ int16_t AcX,AcY,AcZ;
 int minVal=265;
 int maxVal=402;
 
+int dir=1;
+
 double angle;
 
 double Setpoint, Input, Output;
 
-double Kp=0, Ki=0, Kd=0;
+double Kp=2, Ki=1, Kd=1;
+
+byte start;
 
 PID pid(&Input, &Output, &Setpoint, Kp, Ki, Kd, DIRECT);
 
@@ -23,8 +27,8 @@ PID pid(&Input, &Output, &Setpoint, Kp, Ki, Kd, DIRECT);
 
 #define MICROSTEPS 1
 
-#define DIR_X 8
-#define STEP_X 9
+#define DIR_X 17
+#define STEP_X 16
 #define DIR_Y 8
 #define STEP_Y 9
 
@@ -65,19 +69,32 @@ void loop() {
    angle = RAD_TO_DEG * (atan2(-xAng, -zAng)+PI);
 
    if (angle > 90) {
-      angle = -1*(360 - angle);
+      angle = 360 - angle;
+      dir = -1;
+   } else {
+      dir = 1;
    }
 
-   Serial.print("AngleY= ");
-   Serial.println(angle);
+   if (angle < 5) {
+     start = 0;
+   } else {
+     start = 1;
+   }
 
-   Serial.println("-----------------------------------------");
-
+//   Serial.print("AngleY= ");
+//   Serial.println(angle);
+//
+//   Serial.println("-----------------------------------------");
+//    delay(400);
    Input = angle;
    pid.Compute();
 
-   Serial.println(Output);
-
-   Serial.println("-----------------------------------------");
-   delay(400);
+//   Serial.println(Output);
+//
+//   Serial.println("-----------------------------------------");
+//   delay(400);
+  if (start) {
+     stepper_x.rotate(dir*Output);
+     stepper_y.rotate(dir*Output);
+  }
 }
