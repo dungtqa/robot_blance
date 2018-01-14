@@ -81,18 +81,18 @@ void loop() {
      start = 1;
    }
 
-//   Serial.print("AngleY= ");
-//   Serial.println(angle);
-//
-//   Serial.println("-----------------------------------------");
-//    delay(400);
+   Serial.print("AngleY= ");
+   Serial.println(angle);
+
+   Serial.println("-----------------------------------------");
+
    Input = angle;
    pid.Compute();
 
-//   Serial.println(Output);
-//
-//   Serial.println("-----------------------------------------");
-//   delay(400);
+   Serial.println(Output);
+
+   Serial.println("-----------------------------------------");
+   delay(400);
   if (start) {
      stepper_x.rotate(dir*Output);
      stepper_y.rotate(dir*Output);
