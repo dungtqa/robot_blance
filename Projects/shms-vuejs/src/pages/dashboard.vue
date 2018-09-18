@@ -186,8 +186,7 @@ export default {
     }
   },
   mqtt: {
-    'homie/18fe34d58fac/$online': function (val) {
-      console.log('homie/18fe34d58fac/$online')
+    'homie/18fe34d58fac/temperature/degrees' (val) {
     }
   }
 }

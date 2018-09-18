@@ -24,12 +24,12 @@
         <q-btn flat round dense icon="notifications">
           <q-chip floating color="red" @click="leftDrawerOpen = !leftDrawerOpen" >1</q-chip>
         </q-btn>
-        <q-btn flat round dense icon="wifi">
+        <!-- <q-btn flat round dense icon="wifi">
           <q-popover class="bg-tertiary text-white">
             <q-list separator link>
               <q-item v-close-overlay @click.native="doSomething">
                 <q-item-main>
-                  <q-item-tile label>Gas Station</q-item-tile>
+                  <q-item-tile>Gas Station</q-item-tile>
                 </q-item-main>
                 <q-item-side>
                   <q-icon color="white" name="wifi" size="24px" />
@@ -37,7 +37,7 @@
               </q-item>
               <q-item v-close-overlay @click.native="doSomething">
                 <q-item-main>
-                  <q-item-tile label>Gas Station</q-item-tile>
+                  <q-item-tile>Gas Station</q-item-tile>
                 </q-item-main>
                 <q-item-side>
                   <q-icon color="white" name="wifi" size="24px" />
@@ -45,7 +45,7 @@
               </q-item>
               <q-item v-close-overlay @click.native="doSomething">
                 <q-item-main>
-                  <q-item-tile label>Gas Station</q-item-tile>
+                  <q-item-tile>Gas Station</q-item-tile>
                 </q-item-main>
                 <q-item-side>
                   <q-icon color="white" name="wifi" size="24px" />
@@ -53,7 +53,7 @@
               </q-item>
               <q-item v-close-overlay @click.native="doSomething">
                 <q-item-main>
-                  <q-item-tile label>Gas Station</q-item-tile>
+                  <q-item-tile>Gas Station</q-item-tile>
                 </q-item-main>
                 <q-item-side>
                   <q-icon color="white" name="wifi" size="24px" />
@@ -61,7 +61,7 @@
               </q-item>
             </q-list>
           </q-popover>
-        </q-btn>
+        </q-btn> -->
       </q-toolbar>
     </q-layout-header>
 
